@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="อัปโหลดรูปเข้า GitHub และคัดลอก URL รูปโดยตรง" />
+    <title>Winkwink Image Uploader</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card" aria-labelledby="page-title">
+        <header class="brand-row">
+          <img class="brand-logo" src="/public/images/ui/winkwink-rent-logo.png" alt="Winkwink Rent" />
+          <div>
+            <p class="eyebrow">WINKWINK RENT</p>
+            <h1 id="page-title">ฝากรูป รับลิงก์ จบ 💖</h1>
+            <p class="subtitle">เลือกรูปจากเครื่อง ระบบจะอัปขึ้น GitHub และส่ง URL ให้คัดลอกทันที</p>
+          </div>
+        </header>
+
+        <form id="upload-form" novalidate>
+          <label class="field">
+            <span>รหัสผ่านสำหรับอัปโหลด</span>
+            <input id="upload-password" name="password" type="password" autocomplete="current-password" placeholder="ใส่รหัสที่ได้รับ" required />
+          </label>
+
+          <label class="drop-zone" id="drop-zone" for="image-file">
+            <input id="image-file" name="image" type="file" accept="image/jpeg,image/png,image/webp" required />
+            <span class="drop-icon" aria-hidden="true">＋</span>
+            <strong>กดเลือกรูปจากเครื่อง</strong>
+            <small>หรือลากรูปมาวาง · JPG, PNG, WebP · ไม่เกิน 4 MB</small>
+          </label>
+
+          <div class="preview-panel" id="preview-panel" hidden>
+            <img id="image-preview" alt="ตัวอย่างรูปที่จะอัปโหลด" />
+            <div class="preview-details">
+              <label class="field compact-field">
+                <span>ชื่อไฟล์</span>
+                <input id="filename" autocomplete="off" spellcheck="false" />
+              </label>
+              <small id="file-summary"></small>
+            </div>
+          </div>
+
+          <button class="primary-button" id="upload-button" type="submit">
+            <span>อัปโหลดและรับ URL</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <div class="status" id="status" role="status" aria-live="polite" hidden></div>
+
+        <section class="result" id="result" aria-labelledby="result-title" hidden>
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <div class="result-copy">
+            <h2 id="result-title">เรียบร้อยแล้ว!</h2>
+            <p>กดคัดลอก แล้วนำ URL ไปใช้ได้เลย</p>
+          </div>
+          <div class="url-row">
+            <input id="result-url" readonly aria-label="URL รูปใหม่" />
+            <button id="copy-button" class="secondary-button" type="button">คัดลอก URL</button>
+          </div>
+          <div class="result-actions">
+            <a id="open-image-link" class="open-link" href="#" target="_blank" rel="noopener">เปิดดูรูป ↗</a>
+            <button id="upload-another" class="text-button" type="button">แนบรูปต่อ ＋</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
