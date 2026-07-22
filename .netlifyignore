@@ -1,0 +1,9 @@
+.git/
+.agents/
+.env
+.env.*
+!.env.example
+README.md
+tests/
+event-image-migration.csv
+public/images/events/
